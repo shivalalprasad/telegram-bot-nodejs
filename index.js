@@ -4,6 +4,10 @@ const axios = require('axios');
 
 const dotenv = require('dotenv');
 
+const express = require('express');
+
+const app = express();
+
 dotenv.config();
 const bot = new TgBot(process.env.BOT_API_KEY,{polling:true})
 
@@ -21,3 +25,5 @@ bot.onText(/\/joke/,async (option)=>{
 
   bot.sendMessage(option.chat.id, setup + " , " + punchline)
 })
+
+app.listen(process.env.PORT || 3000,()=>{})
